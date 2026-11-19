@@ -1,3 +1,7 @@
+import os                  #追加。OSの機能のパッケージ
+from glob import glob      #追加。グロブ（ワイルドカード）を扱う
+
+
 from setuptools import find_packages, setup
 
 package_name = 'mypkg'
@@ -10,6 +14,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
